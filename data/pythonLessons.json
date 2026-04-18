@@ -1,0 +1,262 @@
+[
+    {
+      "id": 1,
+      "title": "Introduction to Python and Setup",
+      "description": "Install Python, understand how to run code, and write your first program.",
+      "content": "Download Python from python.org (recommended version 3.10 or higher).\n\nYou can run Python in two ways:\n1. Interactive shell (type 'python' in terminal)\n2. Create a .py file and run it with: python filename.py\n\nFirst program:\nprint('Hello, World!')\nprint('I am ready to learn Django!')",
+      "quizzes": [
+        {
+          "question": "What is the correct command to run a Python file named hello.py?",
+          "options": ["python hello", "run hello.py", "python hello.py", "py run hello"],
+          "correct_answer": "python hello.py"
+        },
+        {
+          "question": "Which website should you visit to download Python?",
+          "options": ["django.com", "python.org", "github.com", "pycharm.org"],
+          "correct_answer": "python.org"
+        },
+        {
+          "question": "What is the extension for Python files?",
+          "options": [".js", ".html", ".py", ".java"],
+          "correct_answer": ".py"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Variables and Data Types",
+      "description": "Learn how to store data using variables and understand basic data types.",
+      "content": "name = 'Samir'          # string (str)\nage = 25                # integer (int)\nheight = 1.75           # float\nis_student = True       # boolean (bool)\n\nprint(f'My name is {name} and I am {age} years old.')",
+      "quizzes": [
+        {
+          "question": "Which data type is used to store decimal numbers?",
+          "options": ["int", "str", "float", "bool"],
+          "correct_answer": "float"
+        },
+        {
+          "question": "What data type is True or False?",
+          "options": ["int", "str", "bool", "float"],
+          "correct_answer": "bool"
+        },
+        {
+          "question": "How do you create a string variable?",
+          "options": ["name = Samir", "name = 'Samir'", "name := Samir", "string name = Samir"],
+          "correct_answer": "name = 'Samir'"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Operators and Expressions",
+      "description": "Perform calculations and make comparisons.",
+      "content": "Arithmetic operators: +, -, *, /, //, %, **\nComparison: ==, !=, >, <, >=, <=\n\nExample:\nprint(10 + 5)      # 15\nprint(10 // 3)     # 3 (floor division)",
+      "quizzes": [
+        {
+          "question": "What is the result of 17 // 5 ?",
+          "options": ["3.4", "3", "4", "2"],
+          "correct_answer": "3"
+        },
+        {
+          "question": "Which operator is used for power (exponent)?",
+          "options": ["^", "*", "**", "//"],
+          "correct_answer": "**"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Strings and String Methods",
+      "description": "Work with text data effectively.",
+      "content": "text = 'hello django'\nprint(text.upper())           # HELLO DJANGO\nprint(text.title())           # Hello Django\nprint(text.split())           # ['hello', 'django']\nprint(f'Welcome {text.capitalize()}')",
+      "quizzes": [
+        {
+          "question": "What does 'python'.upper() return?",
+          "options": ["Python", "PYTHON", "python", "PyThOn"],
+          "correct_answer": "PYTHON"
+        },
+        {
+          "question": "Which method converts the first letter of each word to capital?",
+          "options": [".upper()", ".lower()", ".title()", ".capitalize()"],
+          "correct_answer": ".title()"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "User Input",
+      "description": "Get information from the user.",
+      "content": "name = input('What is your name? ')\nage = int(input('How old are you? '))\n\nprint(f'Hello {name}, you are {age} years old.')",
+      "quizzes": [
+        {
+          "question": "What does the input() function always return?",
+          "options": ["int", "float", "string", "bool"],
+          "correct_answer": "string"
+        },
+        {
+          "question": "How do you get a number from the user?",
+          "options": ["input()", "int(input())", "str(input())", "number(input())"],
+          "correct_answer": "int(input())"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Control Flow - if, elif, else",
+      "description": "Make decisions in your programs.",
+      "content": "age = 20\nif age >= 18:\n    print('You are an adult')\nelif age >= 13:\n    print('You are a teenager')\nelse:\n    print('You are a child')",
+      "quizzes": [
+        {
+          "question": "What is the correct keyword for 'else if' in Python?",
+          "options": ["else if", "elseif", "elif", "if else"],
+          "correct_answer": "elif"
+        },
+        {
+          "question": "If age = 16, what will be printed in the example?",
+          "options": ["You are an adult", "You are a teenager", "You are a child", "Nothing"],
+          "correct_answer": "You are a teenager"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Loops - for and while",
+      "description": "Repeat code multiple times.",
+      "content": "for i in range(5):\n    print(i)\n\ncount = 0\nwhile count < 3:\n    print(count)\n    count += 1",
+      "quizzes": [
+        {
+          "question": "What numbers will range(5) generate?",
+          "options": ["1,2,3,4,5", "0,1,2,3,4", "1,2,3,4", "0,1,2,3,4,5"],
+          "correct_answer": "0,1,2,3,4"
+        },
+        {
+          "question": "Which loop is best when you know how many times to repeat?",
+          "options": ["while", "for", "if", "input"],
+          "correct_answer": "for"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Lists and Tuples",
+      "description": "Store multiple items in order.",
+      "content": "fruits = ['apple', 'banana', 'cherry']\nfruits.append('orange')\n\n# Tuple is immutable (cannot change)\ncolors = ('red', 'green', 'blue')",
+      "quizzes": [
+        {
+          "question": "Can you change values inside a tuple after creating it?",
+          "options": ["Yes", "No", "Only numbers", "Only strings"],
+          "correct_answer": "No"
+        },
+        {
+          "question": "Which method adds an item to the end of a list?",
+          "options": [".add()", ".push()", ".append()", ".insert()"],
+          "correct_answer": ".append()"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Dictionaries",
+      "description": "Store data as key-value pairs (very important for Django).",
+      "content": "student = {\n    'name': 'Samir',\n    'age': 25,\n    'city': 'Algiers'\n}\nprint(student['name'])\nstudent['age'] = 26",
+      "quizzes": [
+        {
+          "question": "How do you access the value of 'city' in a dictionary?",
+          "options": ["student.city", "student['city']", "student.getcity()", "student(city)"],
+          "correct_answer": "student['city']"
+        },
+        {
+          "question": "What type of data structure uses curly braces {} with key:value pairs?",
+          "options": ["list", "tuple", "dictionary", "set"],
+          "correct_answer": "dictionary"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Functions",
+      "description": "Create reusable blocks of code.",
+      "content": "def greet(name, age=18):\n    return f'Hello {name}, you are {age} years old.'\n\nprint(greet('Samir'))\nprint(greet('Ali', 30))",
+      "quizzes": [
+        {
+          "question": "What keyword is used to define a function?",
+          "options": ["func", "define", "def", "function"],
+          "correct_answer": "def"
+        },
+        {
+          "question": "What does 'return' do in a function?",
+          "options": ["Prints a value", "Sends a value back", "Stops the program", "Creates a loop"],
+          "correct_answer": "Sends a value back"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Modules and Importing",
+      "description": "Use code from other files and Python libraries.",
+      "content": "import math\nprint(math.sqrt(16))\n\nfrom datetime import datetime\nprint(datetime.now())",
+      "quizzes": [
+        {
+          "question": "How do you import only the sqrt function from math?",
+          "options": ["import sqrt from math", "from math import sqrt", "import math.sqrt", "import math -> sqrt"],
+          "correct_answer": "from math import sqrt"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Object-Oriented Programming - Classes & Objects",
+      "description": "Learn classes — the foundation of Django models.",
+      "content": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def introduce(self):\n        print(f'Hi, I am {self.name}')\n\np = Person('Samir', 25)\np.introduce()",
+      "quizzes": [
+        {
+          "question": "What is the name of the special method that runs when creating an object?",
+          "options": ["__start__", "__init__", "__create__", "__new__"],
+          "correct_answer": "__init__"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Inheritance in OOP",
+      "description": "Reuse code using inheritance.",
+      "content": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade",
+      "quizzes": [
+        {
+          "question": "What does super() do?",
+          "options": ["Creates a new class", "Calls the parent class method", "Deletes a class", "Prints information"],
+          "correct_answer": "Calls the parent class method"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Error Handling (Exceptions)",
+      "description": "Handle errors without crashing the program.",
+      "content": "try:\n    num = int(input('Enter number: '))\n    print(100 / num)\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')\nexcept ValueError:\n    print('Please enter a valid number')",
+      "quizzes": [
+        {
+          "question": "Which block is used to catch errors?",
+          "options": ["try", "except", "catch", "error"],
+          "correct_answer": "except"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "File Handling, pip and Virtual Environments",
+      "description": "Work with files and prepare your environment for Django projects.",
+      "content": "with open('notes.txt', 'w') as f:\n    f.write('Ready for Django!')\n\n# Virtual environment commands:\n# python -m venv myenv\n# myenv\\Scripts\\activate     (on Windows)\n\n# Install packages:\n# pip install django",
+      "quizzes": [
+        {
+          "question": "Why do we use virtual environments in Python?",
+          "options": ["To make code faster", "To isolate project dependencies", "To delete Python", "To learn faster"],
+          "correct_answer": "To isolate project dependencies"
+        },
+        {
+          "question": "What command installs Python packages?",
+          "options": ["install pip", "pip install", "python install", "pip add"],
+          "correct_answer": "pip install"
+        }
+      ]
+    }
+  ]

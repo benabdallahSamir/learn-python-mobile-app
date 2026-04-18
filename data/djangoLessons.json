@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Django Setup",
+    "description": "Install Django and start your first project.",
+    "duration": "10 min",
+    "content": "First, install django using pip: pip install django. Then create a project using django-admin startproject myproject..."
+  },
+  {
+    "id": "2",
+    "title": "Models & Databases",
+    "description": "Define your data structures with Django Models.",
+    "duration": "20 min",
+    "content": "Django models are the single, definitive source of truth about your data. They contain the essential fields and behaviors of the data you’re storing..."
+  }
+]
