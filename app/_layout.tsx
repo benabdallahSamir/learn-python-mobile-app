@@ -4,6 +4,8 @@ import { getIntroStatus } from "@/hooks/useStorage";
 import { useRouter } from "expo-router";
 import * as SplashScreen from 'expo-splash-screen';
 import { View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -39,11 +41,14 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="intro" options={{ gestureEnabled: false }} />
-      <Stack.Screen name="quiz" options={{ presentation: 'modal' }} />
-    </Stack>
+    <SafeAreaProvider>
+      <StatusBar style="dark" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="intro" options={{ gestureEnabled: false }} />
+        <Stack.Screen name="quiz" options={{ presentation: 'modal' }} />
+      </Stack>
+    </SafeAreaProvider>
   );
 }

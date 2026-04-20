@@ -1,16 +1,329 @@
 [
-  {
-    "id": "1",
-    "title": "Django Setup",
-    "description": "Install Django and start your first project.",
-    "duration": "10 min",
-    "content": "First, install django using pip: pip install django. Then create a project using django-admin startproject myproject..."
-  },
-  {
-    "id": "2",
-    "title": "Models & Databases",
-    "description": "Define your data structures with Django Models.",
-    "duration": "20 min",
-    "content": "Django models are the single, definitive source of truth about your data. They contain the essential fields and behaviors of the data you’re storing..."
-  }
-]
+    {
+      "id": 1,
+      "title": "Introduction to Django and MVT Architecture",
+      "description": "Understand what Django is and how the Model-View-Template pattern works.",
+      "content": "Django is a high-level Python web framework that promotes rapid development and clean design.\n\nMVT Architecture:\n- Model: Handles data and database\n- View: Handles business logic and HTTP requests\n- Template: Handles presentation (HTML)\n\nDjango is 'batteries-included' with built-in admin, authentication, ORM, forms, and security features.",
+      "quizzes": [
+        {
+          "question": "What does MVT stand for in Django?",
+          "options": ["Model-View-Template", "Model-View-Controller", "Main-View-Template", "Model-Virtual-Template"],
+          "correct_answer": "Model-View-Template"
+        },
+        {
+          "question": "Django is written in which programming language?",
+          "options": ["JavaScript", "Python", "Java", "PHP"],
+          "correct_answer": "Python"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Setting Up Django Project and Virtual Environment",
+      "description": "Install Django and create your first project properly using virtual environment.",
+      "content": "Best practice commands:\npython -m venv venv\nvenv\\Scripts\\activate     # On Windows\npip install django\ndjango-admin startproject myproject .\npython manage.py runserver",
+      "quizzes": [
+        {
+          "question": "What command creates a new Django project?",
+          "options": ["django startproject", "django-admin startproject", "python createproject", "pip startproject"],
+          "correct_answer": "django-admin startproject"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Creating Django Apps and Understanding Project Structure",
+      "description": "Learn the difference between project and app, and explore important files.",
+      "content": "python manage.py startapp blog\n\nKey files:\n- settings.py (project configuration)\n- urls.py (routing)\n- views.py (logic)\n- models.py (database)\n- admin.py (admin panel)",
+      "quizzes": [
+        {
+          "question": "Which command is used to create a new Django app?",
+          "options": ["startproject", "startapp", "createapp", "newapp"],
+          "correct_answer": "startapp"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "URLs and Routing",
+      "description": "Connect URLs to views using path and converters.",
+      "content": "In urls.py:\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path('', views.home, name='home'),\n    path('post/<int:pk>/', views.post_detail, name='post_detail')\n]",
+      "quizzes": [
+        {
+          "question": "What parameter is used to give a name to a URL pattern?",
+          "options": ["id=", "label=", "name=", "url="],
+          "correct_answer": "name="
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Function-Based Views (FBVs)",
+      "description": "Write simple and clear views using functions.",
+      "content": "def home(request):\n    return render(request, 'home.html')\n\ndef post_detail(request, pk):\n    post = Post.objects.get(pk=pk)\n    return render(request, 'post.html', {'post': post})",
+      "quizzes": [
+        {
+          "question": "What does a Django view function usually return?",
+          "options": ["string", "HttpResponse or render()", "print statement", "None"],
+          "correct_answer": "HttpResponse or render()"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Templates and Django Template Language (DTL)",
+      "description": "Create dynamic HTML pages using Django templates.",
+      "content": "{% extends 'base.html' %}\n{% block content %}\n    <h1>{{ title }}</h1>\n    {% for post in posts %}\n        {{ post.title }}\n    {% endfor %}\n{% endblock %}",
+      "quizzes": [
+        {
+          "question": "Which template tag is used for inheritance?",
+          "options": ["{% include %}", "{% extends %}", "{% block %}", "{% for %}"],
+          "correct_answer": "{% extends %}"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Databases in Django: SQL vs NoSQL Overview",
+      "description": "Understand the difference between SQL and NoSQL databases in Django.",
+      "content": "Django ORM works best with SQL databases (PostgreSQL is recommended for production).\nFor MongoDB, use the official django-mongodb-backend.\nDatabase configuration is done in settings.py under DATABASES.",
+      "quizzes": [
+        {
+          "question": "Which database is most recommended for Django production projects?",
+          "options": ["SQLite", "MongoDB", "PostgreSQL", "Oracle"],
+          "correct_answer": "PostgreSQL"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Models and Database Basics",
+      "description": "Define your data structure using Django models.",
+      "content": "from django.db import models\n\nclass Post(models.Model):\n    title = models.CharField(max_length=200)\n    content = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n\n    def __str__(self):\n        return self.title",
+      "quizzes": [
+        {
+          "question": "What is the base class for all Django models?",
+          "options": ["models.Base", "models.Model", "django.Model", "db.Model"],
+          "correct_answer": "models.Model"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Migrations and Django ORM Queries",
+      "description": "Apply database changes and query data using Django ORM.",
+      "content": "Commands:\npython manage.py makemigrations\npython manage.py migrate\n\nCommon queries:\nPost.objects.all()\nPost.objects.filter(title__contains='django')\nPost.objects.get(id=1)",
+      "quizzes": [
+        {
+          "question": "Which command actually applies changes to the database?",
+          "options": ["makemigrations", "migrate", "syncdb", "dbupdate"],
+          "correct_answer": "migrate"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Working with SQL Databases (PostgreSQL & MySQL)",
+      "description": "Configure Django with relational databases like PostgreSQL and MySQL.",
+      "content": "In settings.py:\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': 'mydb',\n        'USER': 'postgres',\n        'PASSWORD': 'password',\n        'HOST': 'localhost',\n        'PORT': '5432'\n    }\n}",
+      "quizzes": [
+        {
+          "question": "What is the ENGINE string for PostgreSQL?",
+          "options": ["django.db.backends.mysql", "django.db.backends.sqlite3", "django.db.backends.postgresql", "django.db.backends.mongodb"],
+          "correct_answer": "django.db.backends.postgresql"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Django Admin Panel Customization",
+      "description": "Use and customize the powerful built-in admin interface.",
+      "content": "In admin.py:\nfrom django.contrib import admin\nfrom .models import Post\n\n@admin.register(Post)\nclass PostAdmin(admin.ModelAdmin):\n    list_display = ['title', 'created_at']\n    search_fields = ['title']",
+      "quizzes": [
+        {
+          "question": "How do you register a model in Django admin?",
+          "options": ["admin.register", "@admin.register", "Both ways work", "admin.site.add"],
+          "correct_answer": "Both ways work"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Forms and ModelForms",
+      "description": "Handle user input with validation using Django forms.",
+      "content": "class PostForm(forms.ModelForm):\n    class Meta:\n        model = Post\n        fields = ['title', 'content']",
+      "quizzes": [
+        {
+          "question": "Which class is used to create a form based on a model?",
+          "options": ["forms.Form", "forms.ModelForm", "forms.AdminForm", "forms.PostForm"],
+          "correct_answer": "forms.ModelForm"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Class-Based Views (CBVs) and Generic Views",
+      "description": "Use reusable class-based views for common operations.",
+      "content": "from django.views.generic import ListView\n\nclass PostListView(ListView):\n    model = Post\n    template_name = 'blog/post_list.html'",
+      "quizzes": [
+        {
+          "question": "Which generic view displays a list of objects?",
+          "options": ["DetailView", "ListView", "CreateView", "UpdateView"],
+          "correct_answer": "ListView"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Static and Media Files Management",
+      "description": "Handle CSS, JavaScript, images, and user-uploaded files.",
+      "content": "STATIC_URL = '/static/'\nMEDIA_URL = '/media/'\n\nIn template: {% load static %}\n<link rel=\"stylesheet\" href=\"{% static 'css/style.css' %}\">",
+      "quizzes": [
+        {
+          "question": "Which setting is used for user-uploaded files?",
+          "options": ["STATIC_URL", "MEDIA_URL", "FILE_URL", "UPLOAD_URL"],
+          "correct_answer": "MEDIA_URL"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "User Authentication and Authorization",
+      "description": "Use Django's built-in system for login, logout, and permissions.",
+      "content": "from django.contrib.auth.decorators import login_required\n\n@login_required\ndef profile(request):\n    return render(request, 'profile.html')",
+      "quizzes": [
+        {
+          "question": "Which decorator is used to allow only logged-in users?",
+          "options": ["@login", "@auth_required", "@login_required", "@user_only"],
+          "correct_answer": "@login_required"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Secure Password Hashing with bcrypt in Django",
+      "description": "Learn how to securely store passwords using bcrypt.",
+      "content": "Install: pip install django[bcrypt]\n\nIn settings.py:\nPASSWORD_HASHERS = [\n    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',\n    'django.contrib.auth.hashers.PBKDF2PasswordHasher',\n    ...\n]\n\nUse: user.set_password('newpassword')\n\nBCryptSHA256PasswordHasher is recommended as it avoids the 72-character limit.",
+      "quizzes": [
+        {
+          "question": "What must be installed to enable bcrypt hashing in Django?",
+          "options": ["bcrypt", "django[bcrypt]", "passlib", "hashlib"],
+          "correct_answer": "django[bcrypt]"
+        },
+        {
+          "question": "Which hasher should be placed first to use bcrypt?",
+          "options": ["PBKDF2PasswordHasher", "Argon2PasswordHasher", "BCryptSHA256PasswordHasher", "ScryptPasswordHasher"],
+          "correct_answer": "BCryptSHA256PasswordHasher"
+        },
+        {
+          "question": "How do you securely set a user's password?",
+          "options": ["user.password = 'pass'", "user.set_password('pass')", "bcrypt.hashpw()", "user.save_password()"],
+          "correct_answer": "user.set_password('pass')"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Custom User Model",
+      "description": "Create your own user model with additional fields.",
+      "content": "from django.contrib.auth.models import AbstractUser\n\nclass CustomUser(AbstractUser):\n    phone = models.CharField(max_length=15)\n\nIn settings.py:\nAUTH_USER_MODEL = 'accounts.CustomUser'",
+      "quizzes": [
+        {
+          "question": "When is it recommended to create a Custom User Model?",
+          "options": ["Always", "Only when you need extra fields", "After first migration", "Never"],
+          "correct_answer": "Only when you need extra fields"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Model Relationships",
+      "description": "Connect models using ForeignKey, ManyToManyField, and OneToOneField.",
+      "content": "class Comment(models.Model):\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)",
+      "quizzes": [
+        {
+          "question": "What does on_delete=models.CASCADE do?",
+          "options": ["Keeps related records", "Deletes related records", "Ignores deletion", "Throws error"],
+          "correct_answer": "Deletes related records"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Advanced ORM Queries",
+      "description": "Write complex and optimized database queries.",
+      "content": "Post.objects.filter(published=True).order_by('-created_at')\nPost.objects.annotate(comment_count=Count('comment'))",
+      "quizzes": [
+        {
+          "question": "Which method adds calculated fields to queryset results?",
+          "options": ["filter()", "annotate()", "aggregate()", "extra()"],
+          "correct_answer": "annotate()"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "MongoDB with Django (Official Backend)",
+      "description": "Integrate MongoDB using the official Django MongoDB backend.",
+      "content": "pip install django-mongodb-backend\n\nIn settings.py use ENGINE: 'django_mongodb_backend'",
+      "quizzes": [
+        {
+          "question": "What is the recommended package for using MongoDB with Django in 2026?",
+          "options": ["Djongo", "PyMongo only", "Official django-mongodb-backend", "MongoEngine"],
+          "correct_answer": "Official django-mongodb-backend"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Signals, Middleware, and Context Processors",
+      "description": "Automate actions and modify request/response cycle.",
+      "content": "from django.db.models.signals import post_save\n@receiver(post_save, sender=User)\ndef create_profile(sender, instance, created, **kwargs): ...",
+      "quizzes": [
+        {
+          "question": "What are Django signals mainly used for?",
+          "options": ["Styling pages", "Automating actions on model events", "Routing URLs", "Hashing passwords"],
+          "correct_answer": "Automating actions on model events"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Testing in Django",
+      "description": "Write tests to ensure your application works correctly.",
+      "content": "from django.test import TestCase\n\nclass PostTest(TestCase):\n    def test_create_post(self):\n        post = Post.objects.create(title='Test')\n        self.assertEqual(post.title, 'Test')",
+      "quizzes": [
+        {
+          "question": "Which base class is commonly used for testing models?",
+          "options": ["SimpleTestCase", "TestCase", "LiveServerTestCase", "ClientTest"],
+          "correct_answer": "TestCase"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Deployment Preparation",
+      "description": "Prepare your Django project for production environment.",
+      "content": "Set DEBUG = False\nUse environment variables for SECRET_KEY\nRun: python manage.py collectstatic\nUse Gunicorn + Nginx or deployment platforms.",
+      "quizzes": [
+        {
+          "question": "What should DEBUG be set to in production?",
+          "options": ["True", "False", "None", "1"],
+          "correct_answer": "False"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Introduction to Django REST Framework (Building APIs)",
+      "description": "Build modern REST APIs using Django REST Framework.",
+      "content": "pip install djangorestframework\n\nUse Serializers and ViewSets to create clean APIs that work with both SQL and MongoDB.",
+      "quizzes": [
+        {
+          "question": "What is the main purpose of Django REST Framework?",
+          "options": ["Create beautiful templates", "Build powerful APIs", "Manage static files", "Handle only authentication"],
+          "correct_answer": "Build powerful APIs"
+        }
+      ]
+    }
+  ]

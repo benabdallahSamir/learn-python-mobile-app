@@ -1,9 +1,7 @@
 import { getUserStats, UserStats } from '@/hooks/useStorage';
-import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'expo-image';
 import { useFocusEffect } from 'expo-router';
 import React, { useCallback, useState } from 'react';
-import { Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 
 const { width } = Dimensions.get('window');
@@ -67,17 +65,6 @@ export default function ProfileScreen() {
         {/* Header Section */}
         <View style={styles.header}>
           <Text style={styles.greeting}>Hello, Student!</Text>
-          <View style={styles.headerIcons}>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons name="notifications-outline" size={26} color="#1C1C1E" />
-              <View style={styles.notificationBadge} />
-            </TouchableOpacity>
-            <Image
-              source="https://i.pravatar.cc/100?u=student123"
-              style={styles.avatar}
-              contentFit="cover"
-            />
-          </View>
         </View>
 
         {/* Progress Section */}
@@ -96,24 +83,7 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* Continue Learning Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Continue learning</Text>
-          <View style={styles.learningCard}>
-            <View style={styles.learningHeader}>
-              <View style={styles.pythonLogoContainer}>
-                <Ionicons name="logo-python" size={32} color="#FFD43B" />
-              </View>
-              <View style={styles.learningTextContainer}>
-                <Text style={styles.currentLessonTitle}>{stats.currentLesson}</Text>
-                <Text style={styles.nextLessonText}>Next lesson</Text>
-              </View>
-            </View>
-            <TouchableOpacity style={styles.resumeButton} activeOpacity={0.8}>
-              <Text style={styles.resumeButtonText}>Resume</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+
 
         {/* Quick Stats Section */}
         <View style={styles.section}>
@@ -134,16 +104,6 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* Daily Tip Section */}
-        <TouchableOpacity style={styles.dailyTipCard} activeOpacity={0.9}>
-          <View style={styles.dailyTipHeader}>
-            <Text style={styles.dailyTipTitle}>Daily tip</Text>
-            <Ionicons name="chevron-forward" size={20} color="#636366" />
-          </View>
-          <Text style={styles.dailyTipContent}>
-            Consistent practice is key! Try to spend at least 15 minutes today on your Python fundamentals.
-          </Text>
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -230,57 +190,6 @@ const styles = StyleSheet.create({
     color: '#1C1C1E',
     marginBottom: 16,
   },
-  learningCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#F2F2F7',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    elevation: 3,
-  },
-  learningHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  pythonLogoContainer: {
-    width: 56,
-    height: 56,
-    borderRadius: 16,
-    backgroundColor: '#1C1C1E',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  learningTextContainer: {
-    flex: 1,
-  },
-  currentLessonTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#1C1C1E',
-  },
-  nextLessonText: {
-    fontSize: 14,
-    color: '#8E8E93',
-    marginTop: 2,
-  },
-  resumeButton: {
-    backgroundColor: '#00AFB9',
-    height: 54,
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  resumeButtonText: {
-    color: '#FFFFFF',
-    fontSize: 17,
-    fontWeight: '700',
-  },
   statsGrid: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -312,29 +221,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 18,
     fontWeight: '500',
-  },
-  dailyTipCard: {
-    marginTop: 32,
-    backgroundColor: '#F0FFFF',
-    borderRadius: 24,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#E0FFFF',
-  },
-  dailyTipHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  dailyTipTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#006666',
-  },
-  dailyTipContent: {
-    fontSize: 15,
-    color: '#008080',
-    lineHeight: 22,
   },
 });
